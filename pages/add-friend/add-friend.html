@@ -1,0 +1,30 @@
+<ion-header color="light">
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button primary (click)="dismiss()">
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list no-border>
+    <h1 padding class="bold">Add a Friend</h1>
+    <ion-item>
+      <ion-label  color="primary" stacked>Name</ion-label>
+      <ion-input name="name" [(ngModel)]="friend.name" type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Email</ion-label>
+      <ion-input name="email" [(ngModel)]="friend.email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>Welcome Message<br><sup >Optional</sup></ion-label>
+      <ion-input name="welcome" [(ngModel)]="friend.message" type="text"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button full clear primary large (click)="inviteFriend()">Invite</button>
+</ion-content>

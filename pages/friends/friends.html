@@ -1,6 +1,16 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="importContacts()">
+        Import
+      </button>
+    </ion-buttons>
     <ion-title>Friends</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addFriend()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
   <ion-toolbar>
     <ion-segment [(ngModel)]="icons" color="primary">
@@ -16,26 +26,36 @@
 <ion-content>
   <div [ngSwitch]="icons">
     <ion-list *ngSwitchCase="'friends'">
-      <h1>Your Friends</h1>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="https://40y2ct3ukiiqtpomj3dvyhc1-wpengine.netdna-ssl.com/wp-content/uploads/icon-avatar-default.png">
-        </ion-avatar>
-        <h2>Ruby</h2>
-        <p>tertiuso@gmailo.com</p>
-      </ion-item>
+      <h1 padding class="bold">Your Friends</h1>
+      <ion-item-sliding *ngFor="let friend of friends">
+        <ion-item>
+          <ion-avatar item-start>
+          <img [src]="friend.profileimg" class="w-50">
+          </ion-avatar>
+          <h2>{{friend.name}}</h2>
+          <p>{{friend.email}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="removeFriendAlert(friend)">
+            <ion-icon name="remove"></ion-icon>
+            Unfriend
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
-
     <ion-list *ngSwitchCase="'requests'">
-      <h1>Your Requests</h1>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="https://40y2ct3ukiiqtpomj3dvyhc1-wpengine.netdna-ssl.com/wp-content/uploads/icon-avatar-default.png">
-        </ion-avatar>
-        <h2>Luna</h2>
-        <p>tertiuso@gmailo.com</p>
-      </ion-item>
-      ...
+      <h1 padding>Your Requests</h1>
+        <ion-item *ngFor="let friend of friends">
+          <ion-avatar item-start>
+          <img [src]="friend.profileimg" class="w-50">
+          </ion-avatar>
+          <h2>{{friend.name}}</h2>
+          <p>{{friend.message}}</p>
+          <p>
+            <button ion-button small color="primary" (click)="accept(friend)" outline>Accept</button>
+            <button ion-button small color="danger" (click)="reject(friend)" outline>Reject</button>
+          </p>
+        </ion-item>
     </ion-list>
   </div>
 </ion-content>
