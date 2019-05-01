@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { AddFriendPage } from '../add-friend/add-friend';
+import { ImportContactsPage } from '../import-contacts/import-contacts';
 import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 
@@ -48,6 +49,14 @@ export class FriendsPage {
     public alertCtrl: AlertController,
     public toastCtrl: ToastController
   ) { }
+
+  importContacts() {
+    const modal = this.modalCtrl.create(ImportContactsPage);
+    modal.present();
+    modal.onDidDismiss(data => {
+     console.log(data);
+    });
+  }
 
   addFriend() {
     const modal = this.modalCtrl.create(AddFriendPage);
@@ -119,8 +128,5 @@ export class FriendsPage {
       position: 'top'
     });
     toast.present();
-  }
-  importContacts() {
-    
   }
 }
