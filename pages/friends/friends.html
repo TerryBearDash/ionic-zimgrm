@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Friends</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="icons" color="primary">
+      <ion-segment-button value="friends">
+        Friends
+      </ion-segment-button>
+      <ion-segment-button value="requests">
+        Requests
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div [ngSwitch]="icons">
+    <ion-list *ngSwitchCase="'friends'">
+      <h1>Your Friends</h1>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://40y2ct3ukiiqtpomj3dvyhc1-wpengine.netdna-ssl.com/wp-content/uploads/icon-avatar-default.png">
+        </ion-avatar>
+        <h2>Ruby</h2>
+        <p>tertiuso@gmailo.com</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'requests'">
+      <h1>Your Requests</h1>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://40y2ct3ukiiqtpomj3dvyhc1-wpengine.netdna-ssl.com/wp-content/uploads/icon-avatar-default.png">
+        </ion-avatar>
+        <h2>Luna</h2>
+        <p>tertiuso@gmailo.com</p>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+</ion-content>
